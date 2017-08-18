@@ -24,7 +24,7 @@ namespace MyAsp
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-luman.css",
                       "~/Content/site.css"));
         }
     }

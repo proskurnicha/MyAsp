@@ -13,6 +13,14 @@ namespace MyAsp
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapMvcAttributeRoutes();
+
+            //routes.MapRoute(
+            //    "MoviesByRealeseDate",
+            //    "Movies/released/{year}/{month}",
+            //    new {controller  = "movies", action = "ByReleaseDate"},
+            //    new {year = @"\d{4}", month = @"\d{1,2}"});//@"2016|2017"
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
