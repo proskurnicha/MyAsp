@@ -1,0 +1,28 @@
+﻿
+@model IEnumerable<MyAsp.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+@if (!Model.Any())
+{
+    <p>У нас нету покачто покупателей!</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>Customers</tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(item.Name, "Deteils", "Customers", new {id = item.ID}, null)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

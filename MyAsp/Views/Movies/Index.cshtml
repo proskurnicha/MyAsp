@@ -1,0 +1,30 @@
+﻿@model IEnumerable<MyAsp.Models.Movie>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movies</h2>
+@if (!Model.Any())
+{
+    <p>У нас нету пока-что видео!</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>Movie</tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(item.Name, "Details","Movies", new {id = item.ID}, null)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+
