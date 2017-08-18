@@ -1,8 +1,26 @@
-﻿@model MyAsp.Models.Movie
+﻿@using MyAsp.Models
+@model MyAsp.ViewModels.RandomMovieViewModel
 @{
     ViewBag.Title = "Random";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@(ViewData["Movies"]).Name</h2>
-
+@{
+    var className = Model.Customers.Count > 5 ? "popular" : null;
+}
+<h2 class="@className">@Model.Movie.Name</h2>
+@if (Model.Customers.Count == 0)
+{
+    <p>Any customers</p>
+}
+else
+{
+    <ul>
+        @foreach (var item in Model.Customers)
+        {
+            <li>
+                @item.Name;
+            </li>
+        }
+    </ul>
+}
