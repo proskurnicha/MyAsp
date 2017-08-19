@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using MyAsp.ViewModels;
 
 namespace MyAsp.Controllers
 {
@@ -22,6 +23,23 @@ namespace MyAsp.Controllers
             _context.Dispose();
         }
 
+        public ActionResult New()
+        {
+            var membershipType = _context.MembershipTypes.ToList();
+            var viewModel = new NewCustomerViewModel()
+            {
+                MembershipTypes = membershipType
+            };
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Create(Customer customer)
+        {
+            _context.Customers.Add(customer);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Customers");
+        }
         // GET: Customers
         public ActionResult Index()
         {
