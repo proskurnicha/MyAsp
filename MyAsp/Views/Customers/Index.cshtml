@@ -1,4 +1,5 @@
 ﻿
+@using MyAsp.Models
 @model IEnumerable<MyAsp.Models.Customer>
 @{
     ViewBag.Title = "Index";
@@ -14,13 +15,22 @@ else
 {
     <table class="table table-bordered table-hover">
         <thead>
-            <tr>Customers</tr>
+            <tr>
+                <td>Customers</td>
+                <td>Discount Rate</td>
+                <td>Sign Up Fee</td>
+                <td>MemberShipType</td>
+            </tr>
+
         </thead>
         <tbody>
             @foreach (var item in @Model)
             {
                 <tr>
-                    <td>@Html.ActionLink(item.Name, "Deteils", "Customers", new {id = item.ID}, null)</td>
+                    <td>@Html.ActionLink(item.Name, "Deteils", "Customers", new { id = item.ID }, null)</td>
+                    <td>@item.MembershipType.DiscountRate%</td>
+                    <td>@item.MembershipType.SignUpFee</td>
+                    <td>@item.MembershipType.Name</td>
                 </tr>
             }
         </tbody>

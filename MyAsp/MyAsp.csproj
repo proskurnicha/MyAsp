@@ -216,9 +216,34 @@
     <Compile Include="Migrations\201708182148147_ApplyAnnotationsToCustomerName.Designer.cs">
       <DependentUpon>201708182148147_ApplyAnnotationsToCustomerName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708190919485_AddNameToMemberShipType.cs" />
+    <Compile Include="Migrations\201708190919485_AddNameToMemberShipType.Designer.cs">
+      <DependentUpon>201708190919485_AddNameToMemberShipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708190922147_AddRecordsToMembershipType.cs" />
+    <Compile Include="Migrations\201708190922147_AddRecordsToMembershipType.Designer.cs">
+      <DependentUpon>201708190922147_AddRecordsToMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708190956588_Monthly.cs" />
+    <Compile Include="Migrations\201708190956588_Monthly.Designer.cs">
+      <DependentUpon>201708190956588_Monthly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708191002554_AddBirthDateToCustomer.cs" />
+    <Compile Include="Migrations\201708191002554_AddBirthDateToCustomer.Designer.cs">
+      <DependentUpon>201708191002554_AddBirthDateToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708191015206_AddBirthDateToCustomer1.cs" />
+    <Compile Include="Migrations\201708191015206_AddBirthDateToCustomer1.Designer.cs">
+      <DependentUpon>201708191015206_AddBirthDateToCustomer1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708191033318_MovieTable.cs" />
+    <Compile Include="Migrations\201708191033318_MovieTable.Designer.cs">
+      <DependentUpon>201708191033318_MovieTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -323,6 +348,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708182148147_ApplyAnnotationsToCustomerName.resx">
       <DependentUpon>201708182148147_ApplyAnnotationsToCustomerName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708190919485_AddNameToMemberShipType.resx">
+      <DependentUpon>201708190919485_AddNameToMemberShipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708190922147_AddRecordsToMembershipType.resx">
+      <DependentUpon>201708190922147_AddRecordsToMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708190956588_Monthly.resx">
+      <DependentUpon>201708190956588_Monthly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708191002554_AddBirthDateToCustomer.resx">
+      <DependentUpon>201708191002554_AddBirthDateToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708191015206_AddBirthDateToCustomer1.resx">
+      <DependentUpon>201708191015206_AddBirthDateToCustomer1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708191033318_MovieTable.resx">
+      <DependentUpon>201708191033318_MovieTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

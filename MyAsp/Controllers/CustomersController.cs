@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace MyAsp.Controllers
 {
@@ -24,13 +25,14 @@ namespace MyAsp.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            var customers = _context.Customers.ToList();
+            //Include для того что бы извлекать данные из таблицы MembershipType
+            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
             return View(customers);
         }
 
         public ActionResult Deteils(int id)
         {
-            var customer = _context.Customers.SingleOrDefault(cust => cust.ID == id);
+            var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(cust => cust.ID == id);
             if (customer == null)
                 return HttpNotFound();
             return View(customer);

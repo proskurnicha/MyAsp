@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,27 +10,31 @@ namespace MyAsp.Controllers
 {
     public class MoviesController : Controller
     {
+        private ApplicationDbContext _context;
+
+        public MoviesController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
         // GET: Movies/Random
         public ActionResult Index()
         {
-            var movie = GetMovies();
+            var movie = _context.Movies.Include(c => c.Genre).ToList();
             return View(movie);
         }
 
         public ActionResult Details(int id)
         {
-            var movie = GetMovies().SingleOrDefault(mov => mov.ID == id);
+            var movie = _context.Movies.Include(c => c.Genre).SingleOrDefault(mov => mov.ID == id);
             if(movie == null)
                 return HttpNotFound();
             return View(movie);
-        }
-        public IEnumerable<Movie> GetMovies()
-        {
-            return new List<Movie>()
-            {
-                new Movie() {ID=1, Name ="Game of Thrones"},
-                new Movie(){ID=2, Name="Shrek"}
-            };
         }
     }
 }
