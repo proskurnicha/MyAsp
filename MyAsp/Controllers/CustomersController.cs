@@ -26,17 +26,29 @@ namespace MyAsp.Controllers
         public ActionResult New()
         {
             var membershipType = _context.MembershipTypes.ToList();
-            var viewModel = new NewCustomerViewModel()
+            var viewModel = new CustomerFormViewModel()
             {
                 MembershipTypes = membershipType
             };
-            return View(viewModel);
+            return View("CustomerForm", viewModel);
         }
 
         [HttpPost]
-        public ActionResult Create(Customer customer)
+        public ActionResult Save(Customer customer)
         {
-            _context.Customers.Add(customer);
+            if (customer.ID == 0)
+                _context.Customers.Add(customer);
+            else
+            {
+                //Mapper.Map(customer,customerInDb);
+                var customerInDb = _context.Customers.SingleOrDefault(n => n.ID == customer.ID);
+                customerInDb.BirthDate = customer.BirthDate;
+                customerInDb.IsSubscribedToNewsletters = customer.IsSubscribedToNewsletters;
+                customerInDb.Name = customer.Name;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+
+            }
+
             _context.SaveChanges();
             return RedirectToAction("Index", "Customers");
         }
@@ -56,5 +68,17 @@ namespace MyAsp.Controllers
             return View(customer);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var customer = _context.Customers.SingleOrDefault(n => n.ID == id);
+            if (customer == null)
+                return HttpNotFound();
+            var customerViewModel = new CustomerFormViewModel()
+            {
+                Customer = customer,
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+            return View("CustomerForm", customerViewModel);
+        }
     }
 }
