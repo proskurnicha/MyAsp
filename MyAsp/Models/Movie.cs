@@ -9,15 +9,22 @@ namespace MyAsp.Models
 {
     public class Movie
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         [Required]
         [MaxLength(255)]
         public string Name  { get; set; }
-        [Required]
         public Genre Genre { get; set; }
+        [Required]
+        [Display(Name = "Genre")]
         public byte GenreId { get; set; }
-        public DateTime DateAdded { get; set; }
-        public DateTime DateRelease { get; set; }
+        [Required]
+        [Display(Name = "Data added")]
+        public DateTime? DateAdded { get; set; }
+        [Required]
+        [Display(Name = "Data release")]
+        public DateTime? DateRelease { get; set; }
+        [Required]
+        [Display(Name = "Number in stock")]
         public byte NumberInStock { get; set; }
 
     }
