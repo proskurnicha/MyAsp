@@ -25,6 +25,14 @@ namespace MyAsp.Controllers
 
         public ActionResult New()
         {
+            if (!ModelState.IsValid)
+            {
+                var movieForm = new MovieFormViewModel
+                {
+
+                };
+                return View("MovieForm", movieForm);
+            }
             var genres = _context.Genres.ToList();
             var movieFormViewModel = new MovieFormViewModel()
             {
@@ -37,16 +45,24 @@ namespace MyAsp.Controllers
             var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
             if (movieInDb == null)
                 return HttpNotFound();
-            var movieFormViewModel = new MovieFormViewModel()
+            var movieFormViewModel = new MovieFormViewModel(movieInDb)
             {
-                Movie = movieInDb,
                 Genres = _context.Genres.ToList()
             };
             return View("MovieForm", movieFormViewModel);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Movie movie)
         {
+            if (!ModelState.IsValid)
+            {
+                var movieModel = new MovieFormViewModel()
+                {
+                    Genres = _context.Genres.ToList()
+                };
+                return View("MovieForm", movieModel);
+            }
             movie.DateAdded = DateTime.Now;
             if (movie.Id == 0)
             {
@@ -61,15 +77,7 @@ namespace MyAsp.Controllers
                 movieInDb.Name = movie.Name;
                 movieInDb.NumberInStock = movie.NumberInStock;
             }
-            try
-            {
-                _context.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+            _context.SaveChanges();
             return RedirectToAction("Index", "Movies");
         }
 
@@ -83,7 +91,7 @@ namespace MyAsp.Controllers
         public ActionResult Details(int id)
         {
             var movie = _context.Movies.Include(c => c.Genre).SingleOrDefault(mov => mov.Id == id);
-            if(movie == null)
+            if (movie == null)
                 return HttpNotFound();
             return View(movie);
         }

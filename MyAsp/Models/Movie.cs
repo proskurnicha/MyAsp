@@ -25,7 +25,9 @@ namespace MyAsp.Models
         public DateTime? DateRelease { get; set; }
         [Required]
         [Display(Name = "Number in stock")]
+        [Range(1, 20)]
         public byte NumberInStock { get; set; }
+
 
     }
 }

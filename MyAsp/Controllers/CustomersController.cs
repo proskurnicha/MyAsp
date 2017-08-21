@@ -42,7 +42,7 @@ namespace MyAsp.Controllers
             {
                 var customerForm = new CustomerFormViewModel()
                 {
-                    Customer =customer,
+                    Customer = customer,
                     MembershipTypes = _context.MembershipTypes.ToList()
                 };
                 return View("CustomerForm", customerForm);
