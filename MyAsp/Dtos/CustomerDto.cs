@@ -15,6 +15,8 @@ namespace MyAsp.Dtos
         public string Name { get; set; }
         public bool IsSubscribedToNewsletters { get; set; }
         public byte MembershipTypeId { get; set; }
+
+        public MembershopTypeDtos  MembershipType { get; set; }
 //        [Min18YearIfAMember]
         public DateTime? BirthDate { get; set; }
 

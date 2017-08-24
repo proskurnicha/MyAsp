@@ -8,7 +8,7 @@ using System.Web.Http;
 using AutoMapper;
 using MyAsp.Dtos;
 using MyAsp.Models;
-
+using System.Data.Entity;
 namespace MyAsp.Controllers.API
 {
     public class CustomersController : ApiController
@@ -28,7 +28,9 @@ namespace MyAsp.Controllers.API
         //GET /api/customers - возвращает всех пользователей
         public IHttpActionResult GetCustomers()
         {
-            var customerDtos = _contex.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
+            var customerDtos = _contex.Customers
+                .Include(c => c.MembershipType).ToList()
+                .Select(Mapper.Map<Customer, CustomerDto>);
             return Ok(customerDtos);
         }
 
