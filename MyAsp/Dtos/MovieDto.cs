@@ -18,7 +18,7 @@ namespace MyAsp.Dtos
         public byte GenreId { get; set; }
         public DateTime DateAdded { get; set; }
         public DateTime DateRelease { get; set; }
-
+        public GenreDtos  Genre{ get; set; }
         [Range(1,20)]
         public byte NumberInStock { get; set; }
     }

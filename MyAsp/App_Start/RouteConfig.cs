@@ -18,7 +18,7 @@ namespace MyAsp
             //routes.MapRoute(
             //    "MoviesByRealeseDate",
             //    "Movies/released/{year}/{month}",
-            //    new {controller  = "movies", action = "ByReleaseDate"},
+            //    new {controller  = "moovies", action = "ByReleaseDate"},
             //    new {year = @"\d{4}", month = @"\d{1,2}"});//@"2016|2017"
 
             routes.MapRoute(

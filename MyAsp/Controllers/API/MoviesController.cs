@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Data.Entity;
 using System.Net.Http;
 using System.Web.Http;
 using AutoMapper;
@@ -27,7 +28,7 @@ namespace MyAsp.Controllers.API
         // GET api/movie
         public IHttpActionResult GetMovies()
         {
-            var movieDtos = _contex.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
+            var movieDtos = _contex.Movies.Include(c => c.Genre).ToList().Select(Mapper.Map<Movie, MovieDto>);
             return Ok(movieDtos);
         }
 
