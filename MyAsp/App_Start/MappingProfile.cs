@@ -18,7 +18,7 @@ namespace MyAsp.App_Start
             //Dto to domain
 
             Mapper.CreateMap<CustomerDto, Customer>().ForMember(c => c.ID, opt => opt.Ignore());
-            Mapper.CreateMap<Movie, MovieDto>().ForMember(c => c.Id, opt => opt.Ignore());
+            Mapper.CreateMap<MovieDto, Movie>().ForMember(c => c.Id, opt => opt.Ignore());
         }
 
     }

@@ -67,8 +67,8 @@ namespace MyAsp.Controllers
         public ActionResult Index()
         {
             //Include для того что бы извлекать данные из таблицы MembershipType
-            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
-            return View(customers);
+            //var customers = _context.Customers.Include(c => c.MembershipType).ToList();
+            return View();
         }
 
         public ActionResult Deteils(int id)

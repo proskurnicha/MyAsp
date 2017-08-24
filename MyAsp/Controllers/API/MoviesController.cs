@@ -77,7 +77,7 @@ namespace MyAsp.Controllers.API
 
         // DELETE api/movie/5
         [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult DeleteMovie(int id)
         {
             var movieInDb = _contex.Movies.SingleOrDefault(m => m.Id == id);
 
