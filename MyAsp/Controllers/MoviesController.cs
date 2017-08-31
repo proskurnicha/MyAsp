@@ -23,6 +23,7 @@ namespace MyAsp.Controllers
             _context.Dispose();
         }
 
+        [Authorize(Roles = RoleName.CanManageMovie)]
         public ActionResult New()
         {
             if (!ModelState.IsValid)
@@ -40,6 +41,8 @@ namespace MyAsp.Controllers
             };
             return View("MovieForm", movieFormViewModel);
         }
+
+        [Authorize(Roles = RoleName.CanManageMovie)]
         public ActionResult Edit(int id)
         {
             var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
@@ -51,6 +54,8 @@ namespace MyAsp.Controllers
             };
             return View("MovieForm", movieFormViewModel);
         }
+
+        [Authorize(Roles = RoleName.CanManageMovie)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Save(Movie movie)
@@ -84,10 +89,13 @@ namespace MyAsp.Controllers
         // GET: Movies/Random
         public ActionResult Index()
         {
-            var movie = _context.Movies.Include(c => c.Genre).ToList();
-            return View(movie);
+            if (User.IsInRole("CanManageMovie"))
+                return View("List");
+            else
+                return View("ReadOnlyList");
         }
 
+        [Authorize(Roles = RoleName.CanManageMovie)]
         public ActionResult Details(int id)
         {
             var movie = _context.Movies.Include(c => c.Genre).SingleOrDefault(mov => mov.Id == id);
