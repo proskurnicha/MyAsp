@@ -12,6 +12,10 @@ namespace MyAsp.Models
         [Required]
         [Display(Name = "Driving license")]
         public string DrivingLicense { get; set ; }
+
+        [Required]
+        [MaxLength(15)]
+        public string Phone { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -71,6 +75,10 @@ namespace MyAsp.Models
         [Required]
         [Display(Name = "Driving License")]
         public string DrivingLicense { get; set; }
+
+        [Required]
+        [MaxLength(15)]
+        public string Phone { get; set; }
 
         [Required]
         [EmailAddress]

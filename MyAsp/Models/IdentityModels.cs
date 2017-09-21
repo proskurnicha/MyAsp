@@ -11,6 +11,9 @@ namespace MyAsp.Models
     public class ApplicationUser : IdentityUser
     {
         [Required]
+        [MaxLength(15)]
+        public string Phone { get; set; }
+        [Required]
         [MaxLength(255)]
         public string DrivingLicense { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
